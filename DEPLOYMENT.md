@@ -44,6 +44,10 @@ HTTP 200  {"status":"ready","redis":true}
 POST https://day12-agent-i0vc.onrender.com/ask
 Body: {"question":"Hello"}; không gửi X-API-Key
 HTTP 401  {"detail":"invalid or missing API key"}
+
+POST https://day12-agent-i0vc.onrender.com/ask
+Body: {"question":"Hello"}; gửi X-API-Key từ DEPLOY_API_KEY và X-User-Id: cp5-auth-check
+HTTP 200  user_id=cp5-auth-check; có câu trả lời
 ```
 
 Có thể kiểm tra lại bằng PowerShell:
@@ -54,7 +58,7 @@ curl.exe -i https://day12-agent-i0vc.onrender.com/ready
 curl.exe -i -X POST https://day12-agent-i0vc.onrender.com/ask -H "Content-Type: application/json" -d '{"question":"Hello"}'
 ```
 
-Bài kiểm tra `/ask` với key hợp lệ là tùy chọn. Nếu cần, đặt `DEPLOY_API_KEY` trong `.env` cục bộ bằng đúng key đã nhập vào Render; không ghi key vào tài liệu hoặc Git.
+Đã chạy bài kiểm tra `/ask` với key hợp lệ qua `DEPLOY_API_KEY` trong `.env` cục bộ. Giá trị key không nằm trong tài liệu hoặc Git.
 
 ## Ảnh minh chứng
 
